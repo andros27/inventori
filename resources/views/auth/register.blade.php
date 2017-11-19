@@ -77,15 +77,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('noTelp') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('no_telp') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">No. Telp</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="number" placeholder="No. Telp" class="form-control" name="noTelp" value="{{ old('noTelp') }}" required>
+                                <input id="email" type="text" placeholder="No. Telp" class="form-control" name="no_telp" value="{{ old('no_telp') }}" required>
 
-                                @if ($errors->has('noTelp'))
+                                @if ($errors->has('no_telp'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('noTelp') }}</strong>
+                                        <strong>{{ $errors->first('no_telp') }}</strong>
                                     </span>
                                 @endif
                             </div>

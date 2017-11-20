@@ -49,32 +49,7 @@
                                 </div>
                             </div>
 
-                             <div class="line"></div>
-                            <div class="form-group row {{ $errors->has('current_password') ? 'has-error' : '' }}">
-                                <label class="col-sm-3 form-control-label">Password Lama</label>
-                                <div class="col-sm-9">
-                                    <input type="password" name="current_password" placeholder="Password Lama" class="form-control">
-                                    <span class="text-danger"><strong>{{ $errors->first('current_password') }}</strong></span>
-                                </div>
-                            </div>
-
-                            <div class="line"></div>
-                            <div class="form-group row {{ $errors->has('password') ? 'has-error' : '' }}">
-                                <label class="col-sm-3 form-control-label">Password Baru</label>
-                                <div class="col-sm-9">
-                                    <input type="password" name="password" placeholder="Password Baru" class="form-control">
-                                    <span class="text-danger"><strong>{{ $errors->first('password') }}</strong></span>
-                                </div>
-                            </div>
-
-                            <div class="line"></div>
-                            <div class="form-group row {{ $errors->has('confirm_password') ? 'has-error' : '' }}">
-                                <label class="col-sm-3 form-control-label">Konfirmasi Password Baru</label>
-                                <div class="col-sm-9">
-                                    <input type="password" name="confirm_password" placeholder="Konfirmasi password Baru" class="form-control">
-                                </div>
-                            </div>
-
+                         
                              <div class="line"></div>
                             <div class="form-group row {{ $errors->has('email') ? 'has-error' : '' }}">
                                 <label class="col-sm-3 form-control-label">E-mail</label>
@@ -85,10 +60,10 @@
                             </div>
 
                             <div class="line"></div>
-                            <div class="form-group row {{ $errors->has('noTelp') ? 'has-error' : '' }}">
+                            <div class="form-group row {{ $errors->has('no_telp') ? 'has-error' : '' }}">
                                 <label class="col-sm-3 form-control-label">No. Telp</label>
                                 <div class="col-sm-9">
-                                    <input type="number" value="{{ $profile->no_telp }}" name="email" placeholder="No Telp" class="form-control">
+                                    <input type="text" value="{{ $profile->no_telp }}" name="no_telp" placeholder="No Telp" class="form-control">
                                     <span class="text-danger"><strong>{{ $errors->first('noTelp') }}</strong></span>
                                 </div>
                             </div>

@@ -32,7 +32,7 @@
                 <h3 class="h4">Tambah Pegawai </h3>
             </div>
             <div class="card-body">
-            <form class="form-horizontal" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+            <form class="form-horizontal" method="POST" action="{{ route('profile.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

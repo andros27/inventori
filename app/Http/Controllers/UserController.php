@@ -16,18 +16,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    protected $pesan = array (
-        //'current_password.min:8' => 'Minimal Password Memiliki 8 digit',
-        'name.required' => 'Field ini harus anda isi',
-        'username.required' => 'Field ini harus anda isi',
-        //'password.min:8' => 'Minimal Password Memiliki 8 digit',
-        //'password.same' => 'Password dengan Konfirmasi harus sama',
-    );
-
+    
     protected $aturan = array(
         'name' => 'required',
         'username' => 'required',
-        'email' => 'required|email',
+        'email' => 'required',
         //'password' => 'min:8',
         //'confirm_password' => 'same:password',
         'noTelp' => 'max:12',
@@ -59,9 +52,32 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    protected function validator(array $request)
+    {
+        return Validator::make($request, [
+            'name' => 'required|string|max:255',
+            'username' => 'required|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'jabatan' => 'required',
+            'password' => 'required|string|min:6|confirmed',
+            'no_telp' => 'required|max:12',
+        ]);
+    }
+
     public function store(Request $request)
     {
         //
+        $add = new User;
+        $add->name = $request['name'];
+        $add->username = $request['username'];
+        $add->no_telp = $request['no_telp'];
+        $add->email = $request['email'];
+        $add->jabatan = $request['jabatan'];
+        $add->password = bcrypt($request['password']);
+        $add->save();
+
+        return Redirect::route('profile.index');
     }
 
     /**
@@ -98,19 +114,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
-        $this->validate($request, $this->aturan, $this->pesan);
+        $this->validate($request, $this->aturan);
 
         $profile = User::find($id);
-
-        /*membuat password
-            bagian membuat password*/
-        $current_password = $profile->password;
-
-        if(Hash::check($request['current_password'], $current_password))//untuk memecah password yang di lock
-        {
-            $profile->password = Hash::make($request['password']); // untuk membuat lock password
-        }
-        
 
         //handle the user upload
         if($request->hasFile('avatar')){
@@ -125,7 +131,7 @@ class UserController extends Controller
         $profile->name = $request['name'];
         $profile->username = $request['username'];
         $profile->email = $request['email'];
-        $profile->no_telp = $request['noTelp'];
+        $profile->no_telp = $request['no_telp'];
         $profile->update();
         return redirect()->back()->with('alert', 'Proses Ubah Sukses!');
     }

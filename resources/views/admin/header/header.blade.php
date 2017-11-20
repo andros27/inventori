@@ -13,7 +13,7 @@
               </div>
               <!-- Navbar Menu -->
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                <li class="nav-item"><a href="" style="text-decoration: none;"><i class="fa fa-cog"></i>&nbsp; Setting</a></li>
+                <li class="nav-item"><a href="{{route('profile.showPass', Auth::user())}}" style="text-decoration: none;"><i class="fa fa-cog"></i>&nbsp; Setting</a></li>
                 <li class="nav-item">&nbsp;&nbsp;</li>
                 <!-- Logout    -->
                 <li class="nav-item"><a href="{{ route('logout') }}" onclick="event.preventDefault();

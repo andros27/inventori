@@ -3,7 +3,7 @@
 @section('main')
 <header class="page-header">
      <div class="container-fluid">
-        <h2 class="no-margin-bottom">{{ $profile->name }}'s Profile</h2>
+        <h2 class="no-margin-bottom">{{ Auth::user()->name }}'s Profile</h2>
     </div>
 </header>
 <ul class="breadcrumb">
@@ -26,10 +26,10 @@
                 @endif
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Edit Profile</h3>
+                      <h3 class="h4">Change Password</h3>
                     </div>
                     <div class="card-body">
-                        <form enctype="multipart/form-data" action="{{route('profile.update', Auth::user()->id)}}" method="POST">
+                        <form enctype="multipart/form-data" action="{{route('profile.changePass', Auth::user()->id)}}" method="POST">
                             {{method_field('PATCH')}} {{csrf_field()}}
                         
                              <div class="line"></div>

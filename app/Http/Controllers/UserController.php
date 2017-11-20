@@ -104,6 +104,26 @@ class UserController extends Controller
         return view('profile', compact('profile')); 
     }
 
+    public function showPassword($id)
+    {
+        $pass = User::find($id);
+        return view('pegawai.changePassword', compact('pass'));
+
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $profile = User::find($id);
+        $current_password = Auth::user()->password;
+
+        if(Hash::check($request['current_password'], $current_password))//untuk memecah password yang di lock
+        {
+            $profile->password = Hash::make($request['password']); // untuk membuat lock password
+            $profile->update();
+            return redirect()->back()->with('alert', 'Proses Ubah Sukses!');    
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *

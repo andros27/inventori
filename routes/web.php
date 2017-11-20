@@ -28,6 +28,8 @@ Route::get('edit/{id}', 'UserController@edit_pass');
 Route::get('profile/password', function(){
 	return view('change_password');
 });
+Route::get('profile/{profile}/pass', 'UserController@showPassword')->name('profile.showPass');
+Route::post('profile/{profile}','UserController@changePassword')->name('profile.changePass');
 Route::resource('kategori', 'KategoriController');
 Route::resource('profile', 'UserController');
 });

@@ -167,6 +167,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //bagian hapus pegawai
+        $profile=User::find($id);
+        $profile->delete();
+
+        return Redirect::route('profile.index');
     }
 }

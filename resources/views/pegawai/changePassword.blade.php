@@ -30,7 +30,7 @@
                     </div>
                     <div class="card-body">
                         <form enctype="multipart/form-data" action="{{route('profile.changePass', Auth::user()->id)}}" method="POST">
-                            {{method_field('PATCH')}} {{csrf_field()}}
+                           {{csrf_field()}}
                         
                              <div class="line"></div>
                             <div class="form-group row {{ $errors->has('current_password') ? 'has-error' : '' }}">

@@ -11,7 +11,7 @@ class KategoriController extends Controller
 {
 
     protected $pesan = array (
-        'nama_kategori.required' => 'Isi Nama Kategori',
+        'naprofile.changePassma_kategori.required' => 'Isi Nama Kategori',
     );
 
     protected $aturan = array(

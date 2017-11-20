@@ -113,6 +113,7 @@ class UserController extends Controller
 
     public function changePassword(Request $request, $id)
     {
+        //dd($request->all());
         $profile = User::find($id);
         $current_password = Auth::user()->password;
 
@@ -120,8 +121,10 @@ class UserController extends Controller
         {
             $profile->password = Hash::make($request['password']); // untuk membuat lock password
             $profile->update();
-            return redirect()->back()->with('alert', 'Proses Ubah Sukses!');    
+            return redirect()->back()->with('alert', 'Proses Ubah Sukses!');                
         }
+
+//        return redirect()->back()->with('alert', 'Proses Ubah Sukses!');
     }
 
     /**

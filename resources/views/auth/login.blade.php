@@ -2,101 +2,94 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TB.Wuni</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="{{asset('template/css/bootstrap.min.css')}}">
-    <!-- Google fonts - Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{{asset('template/css/style.default.css')}}" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="{{asset('template/css/custom.css')}}">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="{{asset('img/Logo.jpg')}}">
-    <!-- Font Awesome CDN-->
-    <!-- you can replace it by local Font Awesome-->
-    <script src="https://use.fontawesome.com/99347ac47f.js"></script>
-    <!-- Font Icons CSS-->
-    <link rel="stylesheet" href="https://file.myfontastic.com/da58YPMQ7U5HY8Rb6UxkNf/icons.css">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>TK.Wuni Loinfo[at]serangkota.go.idgin Page</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="{{asset('template/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{asset('template/bower_components/foinfo[at]serangkota.go.idnt-awesome/css/font-awesome.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{{asset('template/bower_components/Ionicons/css/ionicons.min.css')}}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{asset('template/dist/css/AdminLTE.min.css')}}">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="{{asset('template/dist/css/skins/_all-skins.min.css')}}">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="{{asset('template/bower_components/morris.js/morris.css')}}">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="{{asset('template/bower_components/jvectormap/jquery-jvectormap.css')}}">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="{{asset('template/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{{asset('template/bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="{{asset('template/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   </head>
-  <body>
-    <div class="page login-page">
-      <div class="container d-flex align-items-center">
-        <div class="form-holder has-shadow">
-          <div class="row">
-            <!-- Logo & Information Panel-->
-            <div class="col-lg-6">
-              <div class="info d-flex align-items-center">
-                <div class="content">
-                  <div class="logo">
-                    <h1>Toko Besi Wuni</h1>
-                  </div>
-                  <p>Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence. - Helen Keller</p>
-                </div>
-              </div>
-            </div>
-            <!-- Form Panel    -->
-            <div class="col-lg-6 bg-white">
-              <div class="form d-flex align-items-center">
-                <div class="content">
-                  <form id="login-form" class="form-horizontal" method="POST" action="{{ route('login') }}">
-                    {{ csrf_field() }}
-                    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                      <input id="username" type="text" name="username" value="{{ old('username') }}" required autofocus class="input-material">
-                      @if ($errors->has('username'))
-                        <span class="help-block">
-                          <strong>{{ $errors->first('username') }}</strong>
-                        </span>
-                      @endif
-                      <label for="login-username" class="label-material">User Name</label>
-                    </div>
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                      <input id="password" name="password" required type="password" class="input-material">
-                      @if ($errors->has('password'))
-                        <span class="help-block">
-                          <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                      @endif
-                      <label for="login-password" class="label-material">Password</label>
-                    </div><button type="submit" class="btn btn-primary">Login</button>
-                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
-                  </form>                
-                </div>
-              </div>
-            </div>
-          </div>
+  <body class="hold-transition login-page">
+   <div class="login-box">
+  <div class="login-logo">
+    <a href="{{route('home')}}"><b>TB</b>WUNI</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+
+    <form method="POST" action="{{ route('login') }}">
+      {{ csrf_field() }}
+      <div class="form-group has-feedback {{ $errors->has('username') ? ' has-error' : '' }}">
+        <input type="text" name="username" value="{{ old('username') }}" required autofocus class="form-control" placeholder="Username">
+        @if ($errors->has('username'))
+          <span class="help-block">
+            <strong>{{ $errors->first('username') }}</strong>
+          </span>
+        @endif
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
+        <input type="password" name="password" required class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+       
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>
+        <!-- /.col -->
       </div>
-      <div class="copyrights text-center">
-        <p>Design by <a href="https://bootstrapious.com/admin-templates" class="external">Bootstrapious</a></p>
-        <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-      </div>
-    </div>
-      <!-- Javascript files-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="{{asset('template/js/tether.min.js')}}"></script>
-    <script src="{{asset('template/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('template/js/jquery.cookie.js')}}"> </script>
-    <script src="{{asset('template/js/jquery.validate.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="{{asset('template/js/charts-home.js')}}"></script>
-    <script src="{{asset('template/js/front.js')}}"></script>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
-    <!---->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+    </form>
+    <a href="#">I forgot my password</a><br>
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery 3 -->
+<script src="{{asset('template/bower_components/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{asset('template/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- iCheck -->
+<script src="{{asset('template/plugins/iCheck/icheck.min.js')}}"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>
   </body>
 </html>

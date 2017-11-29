@@ -10,7 +10,7 @@ use Redirect;
 class KategoriController extends Controller
 {
 
-    protected $pesan = array (
+    /*protected $pesan = array (
         'naprofile.changePassma_kategori.required' => 'Isi Nama Kategori',
     );
 
@@ -25,11 +25,10 @@ class KategoriController extends Controller
     public function index()
     {
         //
-        
-        $batas = 10;
-        $kategori = Kategori::orderBy('nama_kategori', 'asc')->paginate($batas);
-        $no = $batas * ($kategori->currentPage() - 1);
-        return view('kategori.index', compact('kategori','no'));
+        //$batas = 10;
+        //$kategori = Kategori::orderBy('nama_kategori', 'asc')->paginate($batas);
+        //$no = $batas * ($kategori->currentPage() - 1);
+        return view('kategori.index');
     }
 
     /**
@@ -37,9 +36,9 @@ class KategoriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function listData()
+    public function listData()
     {
-        $kategori = Kategori::orderBy('nama_kategori', 'asc');
+        $kategori = Kategori::orderBy('nama_kategori', 'asc')->get();
         $no = 0;
         $data = array();
         foreach($kategori as $list)
@@ -53,14 +52,11 @@ class KategoriController extends Controller
                 <a onclick="deleteData('.$list->id_kategori.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
             </div>';
 
-            $data[] = $row;
-
-            
+            $data[] = $row;   
         }
-        //
-       
-       return Datatables::of($data)->escapeColumns([])->make(true);
-    } */
+        $output = array("data"=> $data);
+        return response()->json($output);
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -69,21 +65,20 @@ class KategoriController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create()
+    /*public function create()
     {
         $kategori = Kategori::all();
         return view('kategori.form_tambah_kategori');
-    }
+    }*/
 
     public function store(Request $request)
     {
         //
-        $this->validate($request, $this->aturan, $this->pesan);
+       // $this->validate($request, $this->aturan, $this->pesan);
 
         $tambah = new Kategori;
         $tambah->nama_kategori = $request['nama_kategori'];
         $tambah->save();
-        return Redirect::route('kategori.index');
     }
 
     /**
@@ -107,7 +102,8 @@ class KategoriController extends Controller
     {
         //
         $kategori = Kategori::find($id);
-        return view('kategori.form_ubah_kategori', compact('kategori'));
+        echo json_encode($kategori);
+        //return view('kategori.form_ubah_kategori', compact('kategori'));
 
     }
 
@@ -121,12 +117,12 @@ class KategoriController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request, $this->aturan, $this->pesan);
+        //$this->validate($request, $this->aturan, $this->pesan);
 
         $ubah = Kategori::find($id);
         $ubah->nama_kategori = $request['nama_kategori'];
         $ubah->update();
-        return Redirect::route('kategori.index');
+        //return Redirect::route('kategori.index');
     }
 
     /**
@@ -141,7 +137,7 @@ class KategoriController extends Controller
         $hapus = Kategori::find($id);
         $hapus->delete();
 
-        return Redirect::route('kategori.index');
+        //return Redirect::route('kategori.index');
 
     }
 }

@@ -1,87 +1,101 @@
 @extends('admin.layout')
 @section('main')
-<header>
-	<div class="page-header">
-        <h2 class="no-margin-bottom">Data Master</h2>
-    </div>
-</header>
-<ul class="breadcrumb">
-    <div class="container-fluid">
-        <li class="breadcrumb-item"><a href="{{url('/admin')}}">Home</a></li>
-        <li class="breadcrumb-item active">Kategori</li>
-    </div>
-</ul>
 
-<selection class="table">
-	<div class="row">
-		<div class="col-lg-12 col-xs-12">
-			<div class="card">
-				<div class="card-header d-flex align-items-center">
-                    <h3 class="h4">Kategori</h3>
-                </div>
-                <div class="card-body">
-                @if(!empty($kategori))
-                	<table class="table">
-                        <thead>
-                        	<tr>
-                        		<td></td>
-                        		<td></td>
-                        		<td align="right"><a href="{{route('kategori.create')}}"  class="btn btn-primary"><i class="fa fa-plus-square-o"></i> Tambah</a></td>
-                        	</tr>
-                          <tr>
-                            <th>No</th>
-                            <th>Nama Ketegori</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          @foreach($kategori as $lists)
-                          <tr>
-                            <th>{{++$no}}</th>
-                            <td>{{$lists->nama_kategori}}</td>
-                            <td>
-                              <form action="{{ route('kategori.destroy', $lists->id_kategori) }}" method="POST">
-                                <a href="{{ route('kategori.edit', $lists->id_kategori) }}" class="btn btn-outline-success"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                {{ csrf_field() }}
-                    
-                                <input name="_method" type="hidden" value="DELETE">  
-                                <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                              </form>
-                              
-                            </td>
-                          </tr>
-                          @endforeach
-                        </tbody>
-                      </table>
-                      {{$kategori->links()}}                          
-                      
-                      
-                    </div>
-                    @else
-                    <p>Data Tidak ada !</p>
-                    @endif
-                  </div>
-                </div>
+<section class="content-header">
+  <h1>
+    Data Master
+    <small>Tabel Kategori</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="{{route('home')}}">Data Master</a></li>
+    <li class="active">Kategori</li>
+  </ol>
+</section>
+
+<section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <a onclick="addForm()" class="btn btn-success"><i class="fa fa-plus-circle"></i>Tambah</a>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th align="center">No</th>
+                    <th align="center">Nama Kategori</th>
+                    <th align="center">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                </tbody>
+              </table>
+              
+            </div>
           </div>
-			</div>
-		</div>		
-	</div>
-</selection>
+        </div>
+      </div>
+</section>
 
+@include('kategori.form')
 @endsection
+
 @section('script')
-<!--<script type="text/javascript">
+<script type="text/javascript">
   var table, save_method;
-  $(function()
+  $(function(){
+
+    table = $('.table').DataTable({
+     "processing" : true,
+     "ajax" : {
+       "url" : "{{ route('kategori.data') }}",
+       "type" : "GET"
+     }
+   }); 
+   
+   $('#modal-form form').validator().on('submit', function(e){
+      if(!e.isDefaultPrevented()){
+         var id = $('#id').val();
+         if(save_method == "add") url = "{{ route('kategori.store') }}";
+         else url = "kategori/"+id;
+         
+         $.ajax({
+           url : url,
+           type : "POST",
+           data : $('#modal-form form').serialize(),
+           success : function(data){
+             $('#modal-form').modal('hide');
+             table.ajax.reload();
+           },
+           error : function(){
+             alert("Tidak dapat menyimpan data!");
+           }   
+         });
+         return false;
+     }
+   });
+  });
+
+  //menampilkan form tambah
+  function addForm()
   {
-    //menampilkan dataTable
-    table = $('.table').DataTable(
-    {
-      "processing" : true,
-      "serverside" : true,
-      "ajax" : "{//!! route('kategori.data') !!}"
-      
-    });
+    save_method = "add";
+    $('input[name = method]').val('POST');
+    $('#modal-form').modal('show');
+    $('#modal-form form')[0].reset();
+    $('.modal-title').text('Tambah Kategori');
+  }  
+
+  //menampilkan data di edit form
+  function editForm(id)
+  {
+    save_method = "edit";
+    
   }
-</script>-->
+</script>
+
 @endsection

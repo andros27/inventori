@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use app\User;
+use app\Kategori;
+use app\Supplier;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.main');
+        $user = User::all();
+        return view('admin.main', compact('user'));
     }
 }

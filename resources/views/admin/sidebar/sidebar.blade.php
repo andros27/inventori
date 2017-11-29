@@ -1,35 +1,50 @@
-<div class="page-content d-flex align-items-stretch">
-        <!-- Side Navbar -->
-        <nav class="side-navbar">
-          <!-- Sidebar Header-->
-          <div class="sidebar-header d-flex align-items-center">
-            <a href="{{ route('profile.edit', Auth::user()->id)}}"><div class="avatar"><img src="/uploads/avatar/{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle"></div>
-            <div class="title">
-              <h1 class="h4"> {{ Auth::user()->name }}</h1></a>
-              <p>{{ Auth::user()->jabatan }}</p>
-            </div>
-          </div>
-          <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
-          <ul class="list-unstyled">
-            <li class="active"> <a href="{{url('admin')}}"><i class="fa fa-home"></i>Home</a></li>
-            @if(Auth::user()->jabatan == "Pemilik")
-            <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-handshake-o"></i>Data Master </a>
-              <ul id="dashvariants" class="collapse list-unstyled">
-                <li><a href="{{route('kategori.index')}}"><i class="fa fa-tags"></i> Kategori Barang</a></li>
-                <li><a href="#"><i class="fa fa-id-card-o"></i> Supplier</a></li>
-                <li><a href="{{route('profile.index')}}"><i class="fa fa-users"></i> Pegawai</a></li>
-              </ul>
-            </li>
-            <li> <a href="#"><i class="fa fa-briefcase"></i>Stok Barang </a></li>
-            <li><a href="#dashvariants2" aria-expanded="false" data-toggle="collapse"><i class="fa fa-bar-chart"></i>Laporan </a>
-              <ul id="dashvariants2" class="collapse list-unstyled">
-                <li><a href="#"><i class="fa fa-area-chart"></i>Laba Rugi (FIFO)</a></li>
-                <li><a href="#"><i class="fa fa-bar-chart-o"></i>Pemasukan Barang</a></li>
-                <li><a href="#"><i class="fa fa-pie-chart"></i>Pengeluaran Barang</a></li>
-              </ul>
-            </li>
-            @else
-            <li> <a href="#"><i class="fa fa-briefcase"></i>Stok Barang </a></li>
-            @endif
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="/uploads/avatar/{{ Auth::user()->avatar }}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{ Auth::user()->name }}</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> {{ Auth::user()->jabatan }}</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="active treeview">
+          <a href="{{url('/')}}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa  fa-paper-plane-o"></i>
+            <span>Data Master</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('kategori.index')}}"><i class="fa fa-tags"></i> Kategori Barang</a></li>
+            <li><a href="#"><i class="fa fa-id-card-o"></i> Supplier</a></li>
+            <li><a href="{{route('profile.index')}}"><i class="fa fa-users"></i> Pegawai</a></li>
           </ul>
-        </nav>
+        </li>
+        
+    </section>
+    <!-- /.sidebar -->
+  </aside>

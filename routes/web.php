@@ -24,7 +24,7 @@ Route::get('/admin', function () {
 //Route::post('/profile', 'UserController@update_avatar');
 Route::get('edit/{id}', 'UserController@edit_pass');
 //Route::post('update/{name}', 'UserController@update');*/
-//Route::get('kategori/data', 'KategoriController@listData')->name('kategori.data');
+Route::get('kategori/data', 'KategoriController@listData')->name('kategori.data');
 Route::get('profile/password', function(){
 	return view('change_password');
 });

@@ -1,93 +1,66 @@
 @extends('admin.layout')
 
+@section('title') {{$profile->username}} @endsection
+
 @section('main')
-<header class="page-header">
-     <div class="container-fluid">
-        <h2 class="no-margin-bottom">{{ $profile->name }}'s Profile</h2>
-    </div>
-</header>
-<ul class="breadcrumb">
-    <div class="container-fluid">
-        <li class="breadcrumb-item"><a href="{{url('/admin')}}">Home</a></li>
-        <li class="breadcrumb-item active">Profile</li>
-    </div>
-</ul>
-<section class="form-horizontal">
-    <div class="container-fluid">
+<section class="content-header">
+      <h1>
+        Data Master
+        <small>Pegawai</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{route('profile.index')}}"></a>Pegawai</li>
+        <li class="active">{{$profile->username}}</li>
+      </ol>
+    </section>
+    <section class="content">
         <div class="row">
-            <div class="col-lg-12">
-                @if (session('alert'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert"">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        {{ session('alert') }}
-                    </div>
-                @endif
-                <div class="card">
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Edit Profile</h3>
-                    </div>
-                    <div class="card-body">
-                        <form enctype="multipart/form-data" action="{{route('profile.update', Auth::user()->id)}}" method="POST">
-                            {{method_field('PATCH')}} {{csrf_field()}}
-                        <div class="line"></div>
-                            <div class="form-group row {{ $errors->has('name') ? 'has-error' : '' }}">
-                                <label class="col-sm-3 form-control-label">Name</label>
-                                <div class="col-sm-9">
-                                    <input type="text" value="{{ $profile->name }}" name="name" placeholder="Name" class="form-control">
-                                    <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
-                                </div>
-                            </div>
 
-                             <div class="line"></div>
-                            <div class="form-group row {{ $errors->has('username') ? 'has-error' : '' }}">
-                                <label class="col-sm-3 form-control-label">Username</label>
-                                <div class="col-sm-9">
-                                    <input type="text" value="{{ $profile->username }}" name="username" placeholder="Username" class="form-control">
-                                    <span class="text-danger"><strong>{{ $errors->first('username') }}</strong></span>
-                                </div>
-                            </div>
-
-                         
-                             <div class="line"></div>
-                            <div class="form-group row {{ $errors->has('email') ? 'has-error' : '' }}">
-                                <label class="col-sm-3 form-control-label">E-mail</label>
-                                <div class="col-sm-9">
-                                    <input type="email" value="{{ $profile->email }}" name="email" placeholder="E-mail" class="form-control">
-                                    <span class="text-danger"><strong>{{ $errors->first('email') }}</strong></span>
-                                </div>
-                            </div>
-
-                            <div class="line"></div>
-                            <div class="form-group row {{ $errors->has('no_telp') ? 'has-error' : '' }}">
-                                <label class="col-sm-3 form-control-label">No. Telp</label>
-                                <div class="col-sm-9">
-                                    <input type="text" value="{{ $profile->no_telp }}" name="no_telp" placeholder="No Telp" class="form-control">
-                                    <span class="text-danger"><strong>{{ $errors->first('noTelp') }}</strong></span>
-                                </div>
-                            </div>
-
-                        <div class="line"></div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">Photo / Image</label>
-                                <div class="col-sm-9">
-                                    <input type="file" name="avatar">
-                                </div>
-                            </div>
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="line"></div>
-                            <div class="form-group row">
-                                <div class="col-sm-4 offset-sm-3">
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                    <a href="{{url('/admin')}}" class="btn btn-danger">Batal</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+            <div class="col-md-12">
+                <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">{{$profile->name}}'s Profile</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" enctype="multipart/form-data" action="{{route('profile.update', Auth::user()->id)}}" method="POST">
+              {{method_field('PATCH')}} {{csrf_field()}}
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="text" value="{{ $profile->name }}" name="name" placeholder="Name" class="form-control">
+                    <span class="text-danger"><strong>{{ $errors->first('name') }}</strong></span>
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Username</label>
+                  <input type="text" value="{{ $profile->username }}" name="username" placeholder="Username" class="form-control">
+                  <span class="text-danger"><strong>{{ $errors->first('username') }}</strong></span>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">E-mail</label>
+                  <input type="text" value="{{ $profile->email }}" name="email" placeholder="E-mail" class="form-control">
+                  <span class="text-danger"><strong>{{ $errors->first('email') }}</strong></span>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">No. Telp</label>
+                  <input type="text" value="{{ $profile->no_telp }}" name="no.telp" placeholder="no.Telp" class="form-control">
+                  <span class="text-danger"><strong>{{ $errors->first('notelp') }}</strong></span>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">File input</label>
+                  <input type="file" id="exampleInputFile" name="avatar">
+                  <p class="help-block">Masukan Gambar atau Foto disini</p>
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
             </div>
         </div>
-    </div>
-</section>
-@stop
+    </section>
+@endsection

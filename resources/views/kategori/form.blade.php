@@ -14,7 +14,7 @@
 					<div class="form-group">
 						<label for="nama" class="col-md-3 control-label">Nama Kategori</label>
 						<div class="col-md-6">
-							<input id="inlineFormInput" type="text" name="nama_kategori" autofocus="autofocus" placeholder="Ex. Besi" class="form-control" maxlength="100" required="required">
+							<input id="nama" type="text" name="nama_kategori" autofocus="autofocus" placeholder="Ex. Besi" class="form-control" maxlength="100" required="required">
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>

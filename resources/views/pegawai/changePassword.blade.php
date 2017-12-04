@@ -32,7 +32,7 @@
                         <form enctype="multipart/form-data" action="{{route('profile.changePass', Auth::user()->id)}}" method="POST">
                            {{csrf_field()}}
                         
-                             <div class="line"></div>
+                           <div class="line"></div>
                             <div class="form-group row {{ $errors->has('current_password') ? 'has-error' : '' }}">
                                 <label class="col-sm-3 form-control-label">Password Lama</label>
                                 <div class="col-sm-9">

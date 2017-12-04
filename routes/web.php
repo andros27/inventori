@@ -31,6 +31,7 @@ Route::get('profile/password', function(){
 Route::get('profile/{profile}/pass', 'UserController@showPassword')->name('profile.showPass');
 Route::post('profile/{profile}','UserController@changePassword')->name('profile.changePass');
 Route::resource('kategori', 'KategoriController');
+Route::get('user/data', 'UserController@listData')->name('user.data');
 Route::resource('profile', 'UserController');
 });
 //Route::get('/', function () {

@@ -21,19 +21,39 @@ class UserController extends Controller
         'name' => 'required',
         'username' => 'required',
         'email' => 'required',
-        //'password' => 'min:8',
-        //'confirm_password' => 'same:password',
+        'password' => 'min:8',
+        'confirmed' => 'same:password',
         'noTelp' => 'max:12',
-        
     );
 
     public function index()
     {
         //
-        $halaman =10;
-        $pegawai = User::orderBy('name', 'asc')->paginate($halaman);
-        $no = $halaman * ($pegawai->currentPage() - 1);
-        return view('pegawai.pegawai_list', compact('pegawai', 'no'));
+        return view('pegawai.pegawai_list');
+    }
+
+    public function listData()
+    {
+        $user = User::orderBy('name', 'asc')->get();
+        $no = 0;
+        $data = array();
+        foreach($user as $list)
+        {
+            $no ++;
+            $row = array();
+            $row[] = $no;
+            $row[] = $list->name;
+            $row[] = $list->no_telp;
+            $row[] = $list->email;
+            $row[] = '<div class="btn-group">
+                <a onclick="showForm('.$list->id.')" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+                <a onclick="deleteData('.$list->id.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+            </div>';
+
+            $data[] = $row;   
+        }
+        $output = array("data"=> $data);
+        return response()->json($output);
     }
 
     /**
@@ -60,14 +80,16 @@ class UserController extends Controller
             'username' => 'required|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'jabatan' => 'required',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
+            'confirmed' => 'same:password',
             'no_telp' => 'required|max:12',
         ]);
     }
 
     public function store(Request $request)
     {
-        //
+        //untuk menyimpan data
+
         $add = new User;
         $add->name = $request['name'];
         $add->username = $request['username'];
@@ -77,7 +99,7 @@ class UserController extends Controller
         $add->password = bcrypt($request['password']);
         $add->save();
 
-        return Redirect::route('profile.index');
+        //return Redirect::route('profile.index');
     }
 
     /**
@@ -88,7 +110,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        //untuk melihat data pegawai
     }
 
     /**
@@ -99,16 +121,17 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        //untuk melihat data untuk di-edit
+
         $profile = User::find($id);
-        return view('profile', compact('profile')); 
+        echo json_encode($profile);
+        //return view('profile', compact('profile')); 
     }
 
     public function showPassword($id)
     {
         $pass = User::find($id);
         return view('pegawai.changePassword', compact('pass'));
-
     }
 
     public function changePassword(Request $request, $id)
@@ -137,7 +160,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
-        $this->validate($request, $this->aturan);
+        //$this->validate($request, $this->aturan);
 
         $profile = User::find($id);
 
@@ -156,7 +179,7 @@ class UserController extends Controller
         $profile->email = $request['email'];
         $profile->no_telp = $request['no_telp'];
         $profile->update();
-        return redirect()->back()->with('alert', 'Proses Ubah Sukses!');
+        //return redirect()->back()->with('alert', 'Proses Ubah Sukses!');
     }
 
     /**
@@ -171,6 +194,6 @@ class UserController extends Controller
         $profile=User::find($id);
         $profile->delete();
 
-        return Redirect::route('profile.index');
+        //return Redirect::route('profile.index');
     }
 }

@@ -114,9 +114,7 @@ function deleteData(id){
      $.ajax({
        url : "kategori/"+id,
        type : "POST",
-       data : {'_method' : 'DELETE', 
-       '_token' : $('meta[name=csrf-token]').attr('content')
-     },
+       data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
        success : function(data)
        {
          table.ajax.reload();

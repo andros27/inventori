@@ -45,5 +45,7 @@ Route::post('edit/{profile}/update','ProfileController@update')->name('profile.u
   //  return view('welcome');
 //});
 
+//Bagian Supplier
+Route::resource('supplier', 'SupplierController');
 
 

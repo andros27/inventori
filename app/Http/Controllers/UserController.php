@@ -127,29 +127,6 @@ class UserController extends Controller
         echo json_encode($profile);
         //return view('profile', compact('profile')); 
     }
-
-    public function showPassword($id)
-    {
-        $pass = User::find($id);
-        return view('pegawai.changePassword', compact('pass'));
-    }
-
-    public function changePassword(Request $request, $id)
-    {
-        //dd($request->all());
-        $profile = User::find($id);
-        $current_password = Auth::user()->password;
-
-        if(Hash::check($request['current_password'], $current_password))//untuk memecah password yang di lock
-        {
-            $profile->password = Hash::make($request['password']); // untuk membuat lock password
-            $profile->update();
-            return redirect()->back()->with('alert', 'Proses Ubah Sukses!');                
-        }
-
-//        return redirect()->back()->with('alert', 'Proses Ubah Sukses!');
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -179,7 +156,7 @@ class UserController extends Controller
         $profile->email = $request['email'];
         $profile->no_telp = $request['no_telp'];
         $profile->update();
-        //return redirect()->back()->with('alert', 'Proses Ubah Sukses!');
+        return redirect()->back()->with('alert', 'Proses Ubah Sukses!');
     }
 
     /**

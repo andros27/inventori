@@ -111,12 +111,12 @@ function editForm(id)
       $('#email').val(data.email);
       $('#notelp').val(data.no_telp);
       $('#jabatan').val(data.jabatan);
-       
     },
     error : function(){
       alert("Tidak dapat menampilkan data!");
     }
   });
 }
+
 </script>
 @endsection

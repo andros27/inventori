@@ -57,26 +57,26 @@ $(function(){
    }); 
    
    $('#modal-form form').validator().on('submit', function(e){
-      if(!e.isDefaultPrevented()){
-         var id = $('#id').val();
-         if(save_method == "add") url = "{{ route('kategori.store') }}";
-         else url = "kategori/"+id;
+    if(!e.isDefaultPrevented()){
+      var id = $('#id').val();
+      if(save_method == "add") url = "{{ route('kategori.store') }}";
+      else url = "kategori/"+id;
          
-         $.ajax({
-           url : url,
-           type : "POST",
-           data : $('#modal-form form').serialize(),
-           success : function(data){
-             $('#modal-form').modal('hide');
-             table.ajax.reload();
-           },
-           error : function(){
-             alert("Tidak dapat menyimpan data!");
-           }   
-         });
-         return false;
-     }
-   });
+      $.ajax({
+        url : url,
+        type : "POST",
+        data : $('#modal-form form').serialize(),
+        success : function(data){
+          $('#modal-form').modal('hide');
+          table.ajax.reload();
+        },
+        error : function(){
+          alert("Tidak dapat menyimpan data!");
+        }   
+      });
+    return false;
+    }
+  });
 });
 
 function addForm(){
@@ -110,21 +110,21 @@ function editForm(id){
 }
 
 function deleteData(id){
-   if(confirm("Apakah yakin data akan dihapus?")){
-     $.ajax({
-       url : "kategori/"+id,
-       type : "POST",
-       data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
-       success : function(data)
-       {
-         table.ajax.reload();
-       },
-       error : function()
-       {
-         alert("Tidak dapat menghapus data!");
-       }
-     });
-   }
+  if(confirm("Apakah yakin data akan dihapus?")){
+    $.ajax({
+      url : "kategori/"+id,
+      type : "POST",
+      data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
+      success : function(data)
+      {
+        table.ajax.reload();
+      },
+      error : function()
+      {
+        alert("Tidak dapat menghapus data!");
+      }
+    });
+  }
 }
 </script>
 

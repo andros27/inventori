@@ -46,7 +46,7 @@ class UserController extends Controller
             $row[] = $list->no_telp;
             $row[] = $list->email;
             $row[] = '<div class="btn-group">
-                <a onclick="showForm('.$list->id.')" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+                <a onclick="editForm('.$list->id.')" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
                 <a onclick="deleteData('.$list->id.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
             </div>';
 

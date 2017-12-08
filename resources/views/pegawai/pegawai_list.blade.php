@@ -96,13 +96,13 @@ function editForm(id)
 {
   save_method = "edit";
   $('input[name=_method]').val('PATCH');
-  $('#modal-form form')[0].reset();
+  $('#modal-form2 form')[0].reset();
   $.ajax({
     url : "profile/"+id+"/edit",
     type : "GET",
     dataType : "JSON",
     success : function(data){
-      $('#modal-form').modal('show');
+      $('#modal-form2').modal('show');
       $('.modal-title').text('Edit Pegawai');
        
       $('#id').val(data.id);
@@ -111,6 +111,7 @@ function editForm(id)
       $('#email').val(data.email);
       $('#notelp').val(data.no_telp);
       $('#jabatan').val(data.jabatan);
+      
     },
     error : function(){
       alert("Tidak dapat menampilkan data!");

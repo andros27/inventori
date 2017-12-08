@@ -134,8 +134,8 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         //
-        $hapus = Kategori::find($id);
-        $hapus->delete();
+        $kategori = Kategori::find($id);
+        $kategori->delete();
 
         //return Redirect::route('kategori.index');
 

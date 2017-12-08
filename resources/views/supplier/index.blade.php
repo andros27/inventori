@@ -1,11 +1,11 @@
 @extends('admin.layout')
-@section('title')Pegawai @endsection
+@section('title')Supplier @endsection
 @section('main')
 
 <section class="content-header">
   <h1>
     Data Master
-    <small>Lihat Pegawai</small>
+    <small>Lihat Supplier</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -23,7 +23,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <table id="example2" class="table table-bordered table-hover">
+          <table class="table table-bordered table-hover">
             <thead>
               <tr>
                 <th align="center">No</th>
@@ -43,20 +43,40 @@
   </div>
 </section>
 
-@include('pegawai.form')
 
 @endsection
 @section('script')
 <script type="text/javascript">
 var table, save_method;
-$(function()
-{
+$(function(){
   table = $('.table').DataTable({
     "processing" : true,
     "ajax" : {
-      "url" : "{{ route('user.data') }}",
+      "url" : "{{ route('supplier.data') }}",
       "type" : "GET"
     }
+
+  $('#modal-form form').validator().on('submit', function(e){
+      if(!e.isDefaultPrevented()){
+         var id = $('#id').val();
+         if(save_method == "add") url = "{{ route('supplier.store') }}";
+         else url = "supplier/"+id;
+         
+         $.ajax({
+           url : url,
+           type : "POST",
+           data : $('#modal-form form').serialize(),
+           success : function(data){
+             $('#modal-form').modal('hide');
+             table.ajax.reload();
+           },
+           error : function(){
+             alert("Tidak dapat menyimpan data!");
+           }   
+         });
+         return false;
+     }  
+  });
 }); 
 </script>
 @endsection

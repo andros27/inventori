@@ -14,4 +14,4 @@ class Supplier extends Model
     	return $this->hasMany('App\Produk', 'id_supplier');
     }
 }
-}
+

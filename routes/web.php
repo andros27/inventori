@@ -40,12 +40,16 @@ Route::get('user/data', 'UserController@listData')->name('user.data');
 //bagian profil dan ubah password
 Route::get('edit/{profile}/profile','ProfileController@edit')->name('profile.data');
 Route::post('edit/{profile}/update','ProfileController@update')->name('profile.update_data');
+
+//Bagian Supplier
+Route::get('supplier/data', 'SupplierController@listData')->name('supplier.data');
+Route::resource('supplier', 'SupplierController');
 });
 //Route::get('/', function () {
   //  return view('welcome');
 //});
 
-//Bagian Supplier
-Route::resource('supplier', 'SupplierController');
+
+
 
 

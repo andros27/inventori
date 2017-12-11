@@ -29,7 +29,7 @@
                 <th align="center">No</th>
                 <th align="center">Nama</th>
                 <th align="center">No Telp.</th>
-                <th align="center">Alamat</th>
+                <th align="center">Alamat Kantor</th>
                 <th align="center">Kota</th>
                 <th align="center">#</th>
               </tr>
@@ -43,7 +43,7 @@
   </div>
 </section>
 
-
+@include('supplier.form')
 @endsection
 @section('script')
 <script type="text/javascript">
@@ -55,28 +55,114 @@ $(function(){
       "url" : "{{ route('supplier.data') }}",
       "type" : "GET"
     }
-
+  });
   $('#modal-form form').validator().on('submit', function(e){
-      if(!e.isDefaultPrevented()){
-         var id = $('#id').val();
-         if(save_method == "add") url = "{{ route('supplier.store') }}";
-         else url = "supplier/"+id;
+    if(!e.isDefaultPrevented()){
+      var id = $('#id').val();
+      if(save_method == "add") url = "{{ route('supplier.store') }}";
+      else url = "supplier/"+id;
          
-         $.ajax({
-           url : url,
-           type : "POST",
-           data : $('#modal-form form').serialize(),
-           success : function(data){
-             $('#modal-form').modal('hide');
-             table.ajax.reload();
-           },
-           error : function(){
-             alert("Tidak dapat menyimpan data!");
-           }   
-         });
-         return false;
-     }  
+      $.ajax({
+        url : url,
+        type : "POST",
+        data : $('#modal-form form').serialize(),
+        success : function(data){
+          $('#modal-form').modal('hide');
+          table.ajax.reload();
+        },
+        error : function(){
+          alert("Tidak dapat menyimpan data!");
+        }   
+      });
+    return false;
+    }
   });
 }); 
+
+function addForm(){
+   save_method = "add";
+   $('input[name=_method]').val('POST');
+   $('#modal-form').modal('show');
+   $('#modal-form form')[0].reset();            
+   $('.modal-title').text('Tambah Supplier');
+}
+
+function editForm(id){
+   save_method = "edit";
+   $('input[name=_method]').val('PATCH');
+   $('#modal-form form')[0].reset();
+   $.ajax({
+     url : "supplier/"+id+"/edit",
+     type : "GET",
+     dataType : "JSON",
+     success : function(data){
+       $('#modal-form').modal('show');
+       $('.modal-title').text('Edit Supplier');
+       
+       $('#id').val(data.id_supplier);
+       $('#nama').val(data.nama_supplier);
+       $('#alamat').val(data.alamat_kantor);
+       $('#noTelp').val(data.no_telp);
+       $('#email').val(data.email);
+       $('#provinsi').val(data.provinsi);
+       $('#kota').val(data.kota);
+     },
+     error : function(){
+       alert("Tidak dapat menampilkan data!");
+     }
+   });
+}
+
+/*function showForm(id){
+   //save_method = "edit";
+   $('input[name=_method]').val('PATCH');
+   $('#modal-form form')[0].reset();
+   $.ajax({
+     url : "supplier/"+id+"/edit",
+     type : "GET",
+     dataType : "JSON",
+     success : function(data){
+       $('#modal-form').modal('show');
+       $('.modal-title').text('Edit Supplier');
+       
+       $('#id').val(data.id_supplier);
+       $('#nama').val(data.nama_supplier);
+       $('#alamat').val(data.alamat_kantor);
+       $('#noTelp').val(data.no_telp);
+       $('#email').val(data.email);
+       $('#provinsi').val(data.provinsi);
+       $('#kota').val(data.kota);
+     },
+     error : function(){
+       alert("Tidak dapat menampilkan data!");
+     }
+   });
+}*/
+
+function deleteData(id){
+  if(confirm("Apakah yakin data akan dihapus?")){
+    $.ajax({
+      url : "supplier/"+id,
+      type : "POST",
+      data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
+      success : function(data)
+      {
+        table.ajax.reload();
+      },
+      error : function()
+      {
+        alert("Tidak dapat menghapus data!");
+      }
+    });
+  }
+}
+
+function hanyaAngka(evt) {
+  var charCode = (evt.which) ? evt.which : event.keyCode
+  if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 
+  return false;
+  return true;
+}
 </script>
 @endsection

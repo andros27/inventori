@@ -21,6 +21,24 @@ class userSeeder extends Seeder
         		'jabatan'	=>	'Pemilik',
         		'password'	=>	bcrypt('12345678'),
         	],
+
+            [
+                'name'      => 'Ayu',
+                'username'  => 'kasir',
+                'email'     => 'ayurestyaningsih@gmail.com',
+                'no_telp'   => '085726053851',
+                'jabatan'   =>  'Kasir',
+                'password'  =>  bcrypt('12345678'),
+            ],
+
+            [
+                'name'      => 'Vodka',
+                'username'  => 'karyawan',
+                'email'     => 'karyawan11@gmail.com',
+                'no_telp'   => '085726053851',
+                'jabatan'   =>  'Karyawan',
+                'password'  =>  bcrypt('12345678'),
+            ],
         ));
     }
 }

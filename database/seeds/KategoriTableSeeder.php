@@ -13,10 +13,7 @@ class KategoriTableSeeder extends Seeder
     {
         //
         DB::table('kategori')->insert(array(
-        	['nama_kategori' => 'Asbes'],
         	['nama_kategori' => 'Besi'],
-        	['nama_kategori' => 'Besi Cor'],
-        	['nama_kategori' => 'Aspal'],
         	['nama_kategori' => 'Logam'],
         	['nama_kategori' => 'Beton'],
         	['nama_kategori' => 'Plastik'],
@@ -25,6 +22,18 @@ class KategoriTableSeeder extends Seeder
         	['nama_kategori' => 'Baja'],
         	['nama_kategori' => 'Glass Block'],
         	['nama_kategori' => 'Genteng Atap'],
+            ['nama_kategori' => 'Kran'],
+            ['nama_kategori' => 'Saluran Air'],
+            ['nama_kategori' => 'Cat'],
+            ['nama_kategori' => 'Kuas'],
+            ['nama_kategori' => 'PLamir'],
+            ['nama_kategori' => 'Pompa'],
+            ['nama_kategori' => 'Pintu'],
+            ['nama_kategori' => 'Kawat'],
+            ['nama_kategori' => 'Paku'],
+            ['nama_kategori' => 'Proyek'],
+            ['nama_kategori' => 'Peralatan Kamar Mandi'],
+            ['nama_kategori' => 'Peralatan Tukang'],
         ));
     }
 }

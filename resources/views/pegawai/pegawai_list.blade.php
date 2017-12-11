@@ -96,13 +96,13 @@ function editForm(id)
 {
   save_method = "edit";
   $('input[name=_method]').val('PATCH');
-  $('#modal-form2 form')[0].reset();
+  $('#modal-form form')[0].reset();
   $.ajax({
     url : "profile/"+id+"/edit",
     type : "GET",
     dataType : "JSON",
     success : function(data){
-      $('#modal-form2').modal('show');
+      $('#modal-form').modal('show');
       $('.modal-title').text('Edit Pegawai');
        
       $('#id').val(data.id);

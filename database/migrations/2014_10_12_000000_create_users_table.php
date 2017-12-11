@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('no_telp',12);
-            $table->enum('jabatan', ['Pemilik', 'Karyawan']);
+            $table->enum('jabatan', ['Pemilik', 'Karyawan', 'Kasir']);
             $table->string('password');
             $table->string('avatar')->default('default.jpg');
             $table->rememberToken();

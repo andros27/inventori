@@ -44,6 +44,10 @@ Route::post('edit/{profile}/update','ProfileController@update')->name('profile.u
 //Bagian Supplier
 Route::get('supplier/data', 'SupplierController@listData')->name('supplier.data');
 Route::resource('supplier', 'SupplierController');
+
+//Bagian Provinsi
+Route::get('provinsi/data', 'ProvinsiController@listData')->name('provinsi.data');
+Route::resource('provinsi', 'ProvinsiController');
 });
 //Route::get('/', function () {
   //  return view('welcome');

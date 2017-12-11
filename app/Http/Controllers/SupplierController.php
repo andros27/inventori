@@ -31,9 +31,10 @@ class SupplierController extends Controller
             $row[] = $no;
             $row[] = $list->nama_supplier;
             $row[] = $list->no_telp;
-            $row[] = $list->alamat;
+            $row[] = $list->alamat_kantor;
             $row[] = $list->kota;
             $row[] = '<div class="btn-group">
+               <a onclick="showForm('.$list->id_supplier.')" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a> 
                <a onclick="editForm('.$list->id_supplier.')" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                
                <a onclick="deleteData('.$list->id_supplier.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></div>';
@@ -63,6 +64,14 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         //
+        $tambah = new Supplier;
+        $tambah->nama_supplier= $request['nama'];
+        $tambah->alamat_kantor= $request['alamat_kantor'];
+        $tambah->no_telp= $request['noTelp'];
+        $tambah->email= $request['email'];
+        $tambah->provinsi= $request['provinsi'];
+        $tambah->kota= $request['kota'];
+        $tambah->save();
     }
 
     /**
@@ -85,6 +94,8 @@ class SupplierController extends Controller
     public function edit($id)
     {
         //
+        $supplier = Supplier::find($id);
+        echo json_encode($supplier);
     }
 
     /**
@@ -97,6 +108,14 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $ubah = Supplier::find($id);
+        $ubah->nama_supplier= $request['nama'];
+        $ubah->alamat_kantor= $request['alamat_kantor'];
+        $ubah->no_telp= $request['noTelp'];
+        $ubah->email= $request['email'];
+        $ubah->provinsi= $request['provinsi'];
+        $ubah->kota= $request['kota'];
+        $ubah->update();
     }
 
     /**
@@ -108,5 +127,7 @@ class SupplierController extends Controller
     public function destroy($id)
     {
         //
+        $supplier = Supplier::find($id);
+        $supplier->delete();
     }
 }

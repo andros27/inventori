@@ -15,7 +15,7 @@
 
 <section class="content">
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
               <a onclick="addForm()" class="btn btn-success"><i class="fa fa-plus-circle"></i>Tambah</a>
@@ -31,10 +31,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                 
                 </tbody>
               </table>
-              
             </div>
           </div>
         </div>

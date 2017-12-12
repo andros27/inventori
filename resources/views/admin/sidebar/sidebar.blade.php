@@ -40,7 +40,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{route('kategori.index')}}"><i class="fa fa-tags"></i> Kategori Barang</a></li>
-            <li><a href="{{route('provinsi.index')}}"><i class="fa fa-map-o"></i> Provinsi dan Kota</a></li>
+            <li><a href="{{route('provinsi.index')}}"><i class="fa fa-map-o"></i> Provinsi</a></li>
+            <li><a href="{{route('kota.index')}}"><i class="fa fa-map-o"></i> Kota</a></li>
             <li><a href="{{route('supplier.index')}}"><i class="fa fa-id-card-o"></i> Supplier</a></li>
             <li><a href="{{route('profile.index')}}"><i class="fa fa-users"></i> Pegawai</a></li>
           </ul>

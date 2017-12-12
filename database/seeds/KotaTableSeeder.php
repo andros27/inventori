@@ -12,8 +12,11 @@ class KotaTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('kategori')->insert(array(
-        	
+        DB::table('kota')->insert(array(
+        	[
+        		'provinsi_id' => '1',
+        		'nama_kota' => 'Banda Aceh',
+        	],
         	));
     }
 }

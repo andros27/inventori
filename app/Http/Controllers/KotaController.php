@@ -23,7 +23,7 @@ class KotaController extends Controller
 
     public function listData()
     {
-        $kota = Kota::leftJoin('provinsi', 'provinsi.id', '=', 'kota.provinsi_id')->orderBy('kota.id','asc')->get();
+        $kota = Kota::leftJoin('provinsi', 'provinsi.id', '=', 'kota.provinsi_id')->orderBy('kota.provinsi_id','asc')->get();
         $no = 0;
         $data = array();
         foreach($kota as $list)
@@ -70,7 +70,7 @@ class KotaController extends Controller
             $kota->provinsi_id = $request['provinsi'];
             $kota->nama_kota = $request['nama_kota'];
             $kota->save();
-            echo json_encode(array(['msg'=>'success']));
+            echo json_encode(array('msg'=>'success'));
         }
         else
         {

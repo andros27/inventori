@@ -30,13 +30,13 @@ class KotaController extends Controller
         {
             $no ++;
             $row = array();
-            $row[] = "<input type='checkbox' name='id[]''value='".$list->id."'>";
+            $row[] = "<input type='checkbox' name='id[]' value=".$list->id_kota."'>";
             $row[] = $no;
             $row[] = $list->nama_provinsi;
             $row[] = $list->nama_kota;
             $row[] = '<div class="btn-group">
-               <a onclick="editForm('.$list->id.')" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-               <a onclick="deleteData('.$list->id.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></div>';
+               <a onclick="editForm('.$list->id_kota.')" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+               <a onclick="deleteData('.$list->id_kota.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></div>';
 
             $data[] = $row;   
         }
@@ -134,8 +134,7 @@ class KotaController extends Controller
 
     public function deleteSelected(Request $request)
     {
-        foreach ($request['id'] as $id) {
-            # code...
+        foreach($request['id'] as $id){
             $kota = Kota::find($id);
             $kota->delete();
         }

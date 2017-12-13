@@ -8,10 +8,10 @@ class Kota extends Model
 {
     //
     protected $table = 'kota';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_kota';
 
     public function provinsi()
     {
-    	return $this->belongsTo('App\Provinsi');
+    	return $this->belongsTo('App\Provinsi', 'provinsi_id');
     }
 }

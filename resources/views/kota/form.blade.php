@@ -24,7 +24,7 @@
 						</div>
 					</div>
 
-					<div class="form-group">
+					<div class="form-group" id="kota_input">
     					<label for="nama" class="col-md-3 control-label">Nama Kota</label>
     					<div class="col-md-6">
       						<input id="nama_kota" type="text" class="form-control" name="nama_kota" required>

@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('title')Kota @endsection  
 @section('main')
 
 <section class="content-header">
@@ -9,7 +10,7 @@
   <ol class="breadcrumb">
     <li><a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
     <li><a href="{{route('home')}}">Data Master</a></li>
-    <li class="active">Provinsi dan Kota</li>
+    <li class="active">Kota</li>
   </ol>
 </section>
 
@@ -23,6 +24,8 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+            <form method="post" id="form-kota">
+              {{ csrf_field() }}
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
@@ -36,6 +39,7 @@
                 <tbody>
                 </tbody>
               </table>
+            </form>
             </div>
           </div>
         </div>
@@ -122,14 +126,48 @@ function editForm(id){
        $('#modal-form').modal('show');
        $('.modal-title').text('Edit Kota');
        
-       $('#id').val(data.id);
+       $('#id').val(data.id_kota);
        $('#nama_kota').val(data.nama_kota);
-       $('#kategori').val(data.provinsi_id);
+       $('#provinsi').val(data.provinsi_id);
      },
      error : function(){
        alert("Tidak dapat menampilkan data!");
      }
    });
+}
+  
+function deleteData(id){
+  if(confirm("Apakah yakin data akan dihapus?")){
+    $.ajax({
+      url : "kota/"+id,
+      type : "POST",
+      data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
+      success : function(data){
+        table.ajax.reload();
+      },
+      error : function(){
+        alert("Tidak dapat menghapus data!");
+      }
+    });
+  }
+}
+
+function deleteAll(){
+  if($('input:checked').length < 1){
+    alert('Pilih data yang akan dihapus!');
+  }else if(confirm("Apakah yakin akan menghapus semua data terpilih?")){
+     $.ajax({
+       url : "kota/hapus",
+       type : "POST",
+       data : $('#form-kota').serialize(),
+       success : function(data){
+         table.ajax.reload();
+       },
+       error : function(){
+         alert("Tidak dapat menghapus data!");
+       }
+     });
+   }
 }
 </script>
 

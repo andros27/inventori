@@ -310,6 +310,8 @@ class ComposerStaticInitce65548c45fa55f5b30730377222e40d
     );
 
     public static $classMap = array (
+        'AddForeignKeyToKotaTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_16_134953_add_foreign_key_to_kota_table.php',
+        'AddForeignKeyToSupplierTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_16_134936_add_foreign_key_to_supplier_table.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

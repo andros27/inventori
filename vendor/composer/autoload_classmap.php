@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddForeignKeyToKotaTable' => $baseDir . '/database/migrations/2017_12_16_134953_add_foreign_key_to_kota_table.php',
+    'AddForeignKeyToSupplierTable' => $baseDir . '/database/migrations/2017_12_16_134936_add_foreign_key_to_supplier_table.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

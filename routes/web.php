@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +30,7 @@ Route::get('/admin', function () {
 
 //bagian kategori
 Route::get('kategori/data', 'KategoriController@listData')->name('kategori.data');
+Route::post('kategori/hapus','KategoriController@deleteSelected');
 Route::resource('kategori', 'KategoriController');
 
 //bagian User
@@ -44,6 +44,7 @@ Route::post('edit/{profile}/update','ProfileController@update')->name('profile.u
 //Bagian Supplier
 Route::get('supplier/data', 'SupplierController@listData')->name('supplier.data');
 Route::resource('supplier', 'SupplierController');
+Route::get('supplier/get-kota-list/{id}','SupplierController@ambilDataKota');
 
 //Bagian Provinsi
 Route::get('provinsi/data', 'ProvinsiController@listData')->name('provinsi.data');

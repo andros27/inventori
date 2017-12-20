@@ -45,6 +45,7 @@ class KategoriController extends Controller
         {
             $no ++;
             $row = array();
+            $row[] = "<input type='checkbox' name='id[]' value=".$list->id_kategori."'>";
             $row[] = $no;
             $row[] = $list->nama_kategori;
             $row[] = '<div class="btn-group">
@@ -138,5 +139,13 @@ class KategoriController extends Controller
 
         //return Redirect::route('kategori.index');
 
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        foreach($request['id'] as $id){
+            $kota = Kategori::find($id);
+            $kota->delete();
+        }
     }
 }

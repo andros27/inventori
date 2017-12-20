@@ -33,9 +33,9 @@
                 <th align="center">#</th>
               </tr>
             </thead>
-            <tbody>   
+            <tbody>
             </tbody>
-          </table>   
+          </table>
         </div>
       </div>
     </div>
@@ -56,16 +56,15 @@
        "url" : "{{ route('user.data') }}",
        "type" : "GET"
      }
-   }); 
+   });
 
     $('#modal-form form').validator().on('submit', function(e){
       if(!e.isDefaultPrevented()){
          var id = $('#id').val();
-         if(save_method == "add") url = "{{ route('profile.store') }}";
-         else url = "profile/"+id;
-         
+
+
          $.ajax({
-           url : url,
+           url : "{{ route('profile.store') }}",
            type : "POST",
            data : $('#modal-form form').serialize(),
            success : function(data){
@@ -74,12 +73,20 @@
            },
            error : function(){
              alert("Tidak dapat menyimpan data!");
-           }   
+           }
          });
          return false;
      }
    });
   });
+
+function hanyaAngka(evt) {
+  var charCode = (evt.which) ? evt.which : event.keyCode
+  if (charCode > 31 && (charCode < 48 || charCode > 57))
+
+  return false;
+  return true;
+  }
 
 //menampilkan form tambah
   function addForm()
@@ -88,35 +95,51 @@
     $('input[name = method]').val('POST');
     $('#modal-form').modal('show');
     $('#modal-form form')[0].reset();
-    $('.modal-title').text('Tambah Kategori');
-  }  
+    $('.modal-title').text('Tambah Pegawai');
+  }
 
-  //menampilkan data di edit form  
+  //menampilkan data di edit form
 function editForm(id)
 {
   save_method = "edit";
   $('input[name=_method]').val('PATCH');
-  $('#modal-form form')[0].reset();
+  $('#modal-form2 form')[0].reset();
   $.ajax({
     url : "profile/"+id+"/edit",
     type : "GET",
     dataType : "JSON",
     success : function(data){
-      $('#modal-form').modal('show');
+      $('#modal-form2').modal('show');
       $('.modal-title').text('Edit Pegawai');
-       
+
       $('#id').val(data.id);
-      $('#nama').val(data.name);
-      $('#username').val(data.username);
-      $('#email').val(data.email);
-      $('#notelp').val(data.no_telp);
-      $('#jabatan').val(data.jabatan);
-      
+      $('#nama2').val(data.name);
+      $('#username2').val(data.username);
+      $('#email2').val(data.email);
+      $('#notelp2').val(data.no_telp);
+      $('#jabatan2').val(data.jabatan);
+
     },
     error : function(){
       alert("Tidak dapat menampilkan data!");
     }
   });
+}
+
+function deleteData(id){
+  if(confirm("Apakah yakin data akan dihapus?")){
+    $.ajax({
+      url : "profile/"+id,
+      type : "POST",
+      data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
+      success : function(data){
+        table.ajax.reload();
+      },
+      error : function(){
+        alert("Tidak dapat menghapus data!");
+      }
+    });
+  }
 }
 
 </script>

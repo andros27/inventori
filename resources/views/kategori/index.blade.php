@@ -19,12 +19,16 @@
           <div class="box">
             <div class="box-header">
               <a onclick="addForm()" class="btn btn-success"><i class="fa fa-plus-circle"></i>Tambah</a>
+              <a onclick="deleteAll()" class="btn btn-danger"><i class="fa fa-trash"></i> Haspus</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+            <form method="post" id="form-kategori">
+              {{ csrf_field() }}
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
+                    <th align="center"><input type="checkbox" value="1" id="select-all"></th>
                     <th align="center">No</th>
                     <th align="center">Nama Kategori</th>
                     <th align="center">Aksi</th>
@@ -34,7 +38,7 @@
                  
                 </tbody>
               </table>
-              
+            </form>
             </div>
           </div>
         </div>
@@ -55,6 +59,11 @@ $(function(){
        "type" : "GET"
      }
    }); 
+
+   //centang semua checkbox ketika dicentang dengan id #select-all
+  $('#select-all').click(function(){
+    $('input[type="checkbox"]').prop('checked',this.checked);
+  });
    
    $('#modal-form form').validator().on('submit', function(e){
     if(!e.isDefaultPrevented()){
@@ -125,6 +134,24 @@ function deleteData(id){
       }
     });
   }
+}
+
+function deleteAll(){
+  if($('input:checked').length < 1){
+    alert('Pilih data yang akan dihapus!');
+  }else if(confirm("Apakah yakin akan menghapus semua data terpilih?")){
+     $.ajax({
+       url : "kategori/hapus",
+       type : "POST",
+       data : $('#form-kategori').serialize(),
+       success : function(data){
+         table.ajax.reload();
+       },
+       error : function(){
+         alert("Tidak dapat menghapus data!");
+       }
+     });
+   }
 }
 </script>
 

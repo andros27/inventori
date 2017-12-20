@@ -19,10 +19,8 @@ class CreateKotaTable extends Migration
             $table->string('nama_kota');
             $table->timestamps();
 
-            $table->foreign('provinsi_id')
-            ->references('id')->on('provinsi')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->foreign('provinsi_id')->references('id')->on('provinsi')->onUpdate('CASCADE');
+            
         });
     }
 
@@ -33,10 +31,8 @@ class CreateKotaTable extends Migration
      */
     public function down()
     {
-        Schema::table('kota', function (Blueprint $table) {
-            $table->dropForeign(['provinsi_id']);
-            });
-
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('kota');
+        Schema::enableForeignKeyConstraints();
     }
 }

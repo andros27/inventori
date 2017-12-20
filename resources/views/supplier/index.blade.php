@@ -30,6 +30,7 @@
                 <th align="center">Nama</th>
                 <th align="center">No Telp.</th>
                 <th align="center">Alamat Kantor</th>
+                <th align="center">Provinsi</th>
                 <th align="center">Kota</th>
                 <th align="center">#</th>
               </tr>
@@ -104,8 +105,8 @@ function editForm(id){
        $('#alamat').val(data.alamat_kantor);
        $('#noTelp').val(data.no_telp);
        $('#email').val(data.email);
-       $('#provinsi').val(data.provinsi);
-       $('#kota').val(data.kota);
+       $('#provinsi').val(data.provinsi_id);
+       $('#kota').val(data.id_kota);
      },
      error : function(){
        alert("Tidak dapat menampilkan data!");
@@ -164,5 +165,28 @@ function hanyaAngka(evt) {
   return false;
   return true;
 }
+
+//fungsi pada bagian kota saat memilih provinsi
+$('#provinsi').on('change', function(){
+  var provinsi_id = $(this).val();
+
+  if(provinsi_id){
+    $.ajax({
+      url : 'supplier/get-kota-list/'+provinsi_id,
+      type : "GET",
+      dataType : "json",
+      success : function (data){
+        $('#kota').empty();
+        $.each(data, function(key, value){
+          $('#kota').append('<option value="'+key+'">'+value+'</option>');
+        });
+      }
+    });
+  }
+  else
+  {
+    $('#kota').empty();
+  }
+});
 </script>
 @endsection

@@ -36,9 +36,9 @@
 					</div>
 
 					<div class="form-group">
-						<label for="nama" class="col-md-3 control-label">N0. Telp</label>
+						<label for="nama" class="col-md-3 control-label">No. Telp</label>
 						<div class="col-md-6">
-							<input id="notelp" type="text" name="no_telp" autofocus="autofocus" placeholder="Ex. 123456789012" class="form-control" maxlength="100" required="required">
+							<input id="notelp" type="text" name="no_telp" autofocus="autofocus" placeholder="Ex. 123456789012" class="form-control" maxlength="100" required="required" onkeypress="return hanyaAngka(event)">
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>
@@ -50,6 +50,7 @@
 								<option>--- Pilih ---</option>
 								<option value="Pemilik">Pemilik</option>
 								<option value="Karyawan">Karyawan</option>
+								<option value="Kasir">Kasir</option>
 							</select>
 							<span class="help-block with-errors"></span>
 						</div>
@@ -78,9 +79,9 @@
 				</div>
 			</form>
 		</div>
-		
+
 	</div>
-	
+
 </div>
 
 <div class="modal" id="modal-form2" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
@@ -99,7 +100,7 @@
 					<div class="form-group">
 						<label for="nama" class="col-md-3 control-label">Nama</label>
 						<div class="col-md-6">
-							<input id="nama" type="text" name="name" autofocus="autofocus" placeholder="Ex. Kevin" class="form-control" maxlength="100" required="required">
+							<input id="nama2" type="text" name="name" autofocus="autofocus" placeholder="Ex. Kevin" class="form-control" maxlength="100" required="required">
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>
@@ -107,7 +108,7 @@
 					<div class="form-group">
 						<label for="nama" class="col-md-3 control-label">Username</label>
 						<div class="col-md-6">
-							<input id="username" type="text" name="username" autofocus="autofocus" placeholder="Ex. admin" class="form-control" maxlength="100" required="required">
+							<input id="username2" type="text" name="username" autofocus="autofocus" placeholder="Ex. admin" class="form-control" maxlength="100" required="required">
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>
@@ -115,7 +116,7 @@
 					<div class="form-group">
 						<label for="nama" class="col-md-3 control-label">E-mail</label>
 						<div class="col-md-6">
-							<input id="email" type="text" name="email" autofocus="autofocus" placeholder="Ex. example@example.com" class="form-control" maxlength="100" required="required">
+							<input id="email2" type="text" name="email" autofocus="autofocus" placeholder="Ex. example@example.com" class="form-control" maxlength="100" required="required">
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>
@@ -123,7 +124,7 @@
 					<div class="form-group">
 						<label for="nama" class="col-md-3 control-label">N0. Telp</label>
 						<div class="col-md-6">
-							<input id="notelp" type="text" name="no_telp" autofocus="autofocus" placeholder="Ex. 123456789012" class="form-control" maxlength="100" required="required">
+							<input id="notelp2" type="text" name="no_telp" autofocus="autofocus" placeholder="Ex. 123456789012" class="form-control" maxlength="100" required="required" onkeypress="return hanyaAngka(event)">
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>
@@ -131,10 +132,11 @@
 					<div class="form-group">
 						<label for="nama" class="col-md-3 control-label">Jabatan</label>
 						<div class="col-md-6">
-							<select id="jabatan" name="jabatan" class="form-control">
+							<select id="jabatan2" name="jabatan" class="form-control">
 								<option>--- Pilih ---</option>
 								<option value="Pemilik">Pemilik</option>
 								<option value="Karyawan">Karyawan</option>
+								<option value="Kasir">Kasir</option>
 							</select>
 							<span class="help-block with-errors"></span>
 						</div>
@@ -146,7 +148,7 @@
 				</div>
 			</form>
 		</div>
-		
+
 	</div>
-	
+
 </div>

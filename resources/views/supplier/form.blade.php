@@ -46,16 +46,23 @@
 					<div class="form-group">
 						<label for="nama" class="col-md-3 control-label">Provinsi</label>
 						<div class="col-md-6">
-							<input id="provinsi" type="text" name="provinsi" autofocus="autofocus" placeholder="Provinsi" class="form-control" maxlength="100" required="required">
-							<span class="help-block with-errors"></span>
+							<select id="provinsi" type="text" class="form-control" name="provinsi" required>
+        						<option value=""> -- Pilih Provinsi -- </option>
+        						@foreach($provinsi as $list)
+        						<option value="{{ $list->id }}">{{ $list->nama_provinsi }}</option>
+        						@endforeach
+      						</select>
+      						<span class="help-block with-errors"></span>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="nama" class="col-md-3 control-label">Kota</label>
 						<div class="col-md-6">
-							<input id="kota" type="text" name="kota" autofocus="autofocus" placeholder="Kota" class="form-control" maxlength="100" required="required">
-							<span class="help-block with-errors"></span>
+							<select id="kota" type="text" class="form-control" name="kota" required>
+        						<option value=""> -- Pilih Kota -- </option>
+      						</select>
+      						<span class="help-block with-errors"></span>
 						</div>
 					</div>
 				</div>

@@ -12,6 +12,6 @@ class Provinsi extends Model
 
     public function kota()
     {
-    	return $this->hasMany('App\Kota', 'id');
+    	return $this->hasMany('App\Kota', 'provinsi_id');
     }
 }

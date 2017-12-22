@@ -16,7 +16,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
+
     protected $aturan = array(
         'name' => 'required',
         'username' => 'required',
@@ -50,7 +50,7 @@ class UserController extends Controller
                 <a onclick="deleteData('.$list->id.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
             </div>';
 
-            $data[] = $row;   
+            $data[] = $row;
         }
         $output = array("data"=> $data);
         return response()->json($output);
@@ -89,16 +89,24 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //untuk menyimpan data
-
-        $add = new User;
-        $add->name = $request['name'];
-        $add->username = $request['username'];
-        $add->no_telp = $request['no_telp'];
-        $add->email = $request['email'];
-        $add->jabatan = $request['jabatan'];
-        $add->password = bcrypt($request['password']);
-        $add->save();
-
+        $jml = User::where('email', '=', $request['email'])->count();
+        if($jml < 1)
+        {
+            $add = new User;
+            $add->name = $request['name'];
+            $add->username = $request['username'];
+            $add->no_telp = $request['no_telp'];
+            $add->email = $request['email'];
+            $add->jabatan = $request['jabatan'];
+            $add->password = bcrypt($request['password']);
+            $add->save();
+            echo json_encode(array('msg'=>'success'));
+        }
+        else
+        {
+            echo json_encode(array(['msg'=>'errors']));   
+        }
+        
         //return Redirect::route('profile.index');
     }
 
@@ -125,7 +133,7 @@ class UserController extends Controller
 
         $profile = User::find($id);
         echo json_encode($profile);
-        //return view('profile', compact('profile')); 
+        //return view('profile', compact('profile'));
     }
     /**
      * Update the specified resource in storage.
@@ -147,14 +155,15 @@ class UserController extends Controller
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             $destinationPath = public_path('/uploads/avatar');
             $avatar->move($destinationPath, $filename);
-            
-            $profile->avatar = $filename;    
+
+            $profile->avatar = $filename;
         }
         //bagian update data name, username,dan email
         $profile->name = $request['name'];
         $profile->username = $request['username'];
         $profile->email = $request['email'];
         $profile->no_telp = $request['no_telp'];
+        $profile->jabatan = $request['jabatan'];
         $profile->update();
         return redirect()->back()->with('alert', 'Proses Ubah Sukses!');
     }

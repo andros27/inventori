@@ -57,27 +57,6 @@
        "type" : "GET"
      }
    });
-
-    $('#modal-form form').validator().on('submit', function(e){
-      if(!e.isDefaultPrevented()){
-         var id = $('#id').val();
-
-
-         $.ajax({
-           url : "{{ route('profile.store') }}",
-           type : "POST",
-           data : $('#modal-form form').serialize(),
-           success : function(data){
-             $('#modal-form').modal('hide');
-             table.ajax.reload();
-           },
-           error : function(){
-             alert("Tidak dapat menyimpan data!");
-           }
-         });
-         return false;
-     }
-   });
   });
 
 function hanyaAngka(evt) {
@@ -96,6 +75,25 @@ function hanyaAngka(evt) {
     $('#modal-form').modal('show');
     $('#modal-form form')[0].reset();
     $('.modal-title').text('Tambah Pegawai');
+
+    $('#modal-form form').validator().on('submit', function(e){
+      if(!e.isDefaultPrevented()){
+         
+         $.ajax({
+           url : "{{ route('profile.store') }}",
+           type : "POST",
+           data : $('#modal-form form').serialize(),
+           success : function(data){
+             $('#modal-form').modal('hide');
+             table.ajax.reload();
+           },
+           error : function(){
+             alert("Tidak dapat menyimpan data!");
+           }
+         });
+         return false;
+     }
+   });
   }
 
   //menampilkan data di edit form
@@ -124,6 +122,27 @@ function editForm(id)
       alert("Tidak dapat menampilkan data!");
     }
   });
+
+  $('#modal-form2 form').validator().on('submit', function(e){
+    if(!e.isDefaultPrevented()){
+       var id = $('#id').val();
+
+
+       $.ajax({
+         url : "profile/"+id,
+         type : "POST",
+         data : $('#modal-form2 form').serialize(),
+         success : function(data){
+           $('#modal-form2').modal('hide');
+           table.ajax.reload();
+         },
+         error : function(){
+           alert("Tidak dapat menyimpan data!");
+         }
+       });
+       return false;
+   }
+ });
 }
 
 function deleteData(id){

@@ -310,8 +310,6 @@ class ComposerStaticInitce65548c45fa55f5b30730377222e40d
     );
 
     public static $classMap = array (
-        'AddForeignKeyToKotaTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_16_134953_add_foreign_key_to_kota_table.php',
-        'AddForeignKeyToSupplierTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_16_134936_add_foreign_key_to_supplier_table.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -338,6 +336,7 @@ class ComposerStaticInitce65548c45fa55f5b30730377222e40d
         'App\\Hubungi' => __DIR__ . '/../..' . '/app/Hubungi.php',
         'App\\Kategori' => __DIR__ . '/../..' . '/app/Kategori.php',
         'App\\Kota' => __DIR__ . '/../..' . '/app/Kota.php',
+        'App\\Produk' => __DIR__ . '/../..' . '/app/Produk.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -352,9 +351,11 @@ class ComposerStaticInitce65548c45fa55f5b30730377222e40d
         'CreateKategoriTable' => __DIR__ . '/../..' . '/database/migrations/2017_10_16_221051_create_kategori_table.php',
         'CreateKotaTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_11_053822_create_kota_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateProdukMasukTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_20_092218_create_produk_masuk_table.php',
         'CreateProdukTable' => __DIR__ . '/../..' . '/database/migrations/2017_10_17_070754_create_produk_table.php',
+        'CreateProduksTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_22_045029_create_produks_table.php',
         'CreateProvinsiTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_11_040834_create_provinsi_table.php',
-        'CreateSupplierTable' => __DIR__ . '/../..' . '/database/migrations/2017_11_01_020711_create_supplier_table.php',
+        'CreateSupplierTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_12_020711_create_supplier_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',

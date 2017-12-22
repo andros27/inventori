@@ -18,12 +18,11 @@ class CreateProdukTable extends Migration
             $table->bigInteger('kode_produk')->unsigned();
             $table->integer('id_kategori')->unsigned();
             $table->string('nama_produk', 100);
-            $table->string('merk', 50);
-            $table->bigInteger('harga_beli')->unsigned();
-            $table->integer('diskon')->unsigned();
-            $table->bigInteger('harga_jual')->unsigned();
+            $table->string('merk', 100);
             $table->integer('stok')->unsigned();
             $table->timestamps();
+
+            $table->foreign('id_kategori')->references('id_kategori')->on('kategori')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -34,6 +33,8 @@ class CreateProdukTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('produk');
+        Schema::enableForeignKeyConstraints();
     }
 }

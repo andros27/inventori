@@ -6,8 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AddForeignKeyToKotaTable' => $baseDir . '/database/migrations/2017_12_16_134953_add_foreign_key_to_kota_table.php',
-    'AddForeignKeyToSupplierTable' => $baseDir . '/database/migrations/2017_12_16_134936_add_foreign_key_to_supplier_table.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -34,6 +32,7 @@ return array(
     'App\\Hubungi' => $baseDir . '/app/Hubungi.php',
     'App\\Kategori' => $baseDir . '/app/Kategori.php',
     'App\\Kota' => $baseDir . '/app/Kota.php',
+    'App\\Produk' => $baseDir . '/app/Produk.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
@@ -48,9 +47,11 @@ return array(
     'CreateKategoriTable' => $baseDir . '/database/migrations/2017_10_16_221051_create_kategori_table.php',
     'CreateKotaTable' => $baseDir . '/database/migrations/2017_12_11_053822_create_kota_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateProdukMasukTable' => $baseDir . '/database/migrations/2017_12_20_092218_create_produk_masuk_table.php',
     'CreateProdukTable' => $baseDir . '/database/migrations/2017_10_17_070754_create_produk_table.php',
+    'CreateProduksTable' => $baseDir . '/database/migrations/2017_12_22_045029_create_produks_table.php',
     'CreateProvinsiTable' => $baseDir . '/database/migrations/2017_12_11_040834_create_provinsi_table.php',
-    'CreateSupplierTable' => $baseDir . '/database/migrations/2017_11_01_020711_create_supplier_table.php',
+    'CreateSupplierTable' => $baseDir . '/database/migrations/2017_12_12_020711_create_supplier_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/mtdowling/cron-expression/src/Cron/CronExpression.php',

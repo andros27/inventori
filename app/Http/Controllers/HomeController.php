@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use app\User;
 use app\Kategori;
-use app\Supplier;
+use App\Supplier;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::all();
-        return view('admin.main', compact('user'));
+        $supplier = Supplier::all();
+        return view('admin.main', compact('user', 'supplier'));
     }
 }

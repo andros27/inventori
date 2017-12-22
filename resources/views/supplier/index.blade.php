@@ -35,9 +35,9 @@
                 <th align="center">#</th>
               </tr>
             </thead>
-            <tbody>   
+            <tbody>
             </tbody>
-          </table>   
+          </table>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@ $(function(){
       var id = $('#id').val();
       if(save_method == "add") url = "{{ route('supplier.store') }}";
       else url = "supplier/"+id;
-         
+
       $.ajax({
         url : url,
         type : "POST",
@@ -73,18 +73,18 @@ $(function(){
         },
         error : function(){
           alert("Tidak dapat menyimpan data!");
-        }   
+        }
       });
     return false;
     }
   });
-}); 
+});
 
 function addForm(){
    save_method = "add";
    $('input[name=_method]').val('POST');
    $('#modal-form').modal('show');
-   $('#modal-form form')[0].reset();            
+   $('#modal-form form')[0].reset();
    $('.modal-title').text('Tambah Supplier');
 }
 
@@ -99,14 +99,14 @@ function editForm(id){
      success : function(data){
        $('#modal-form').modal('show');
        $('.modal-title').text('Edit Supplier');
-       
+
        $('#id').val(data.id_supplier);
        $('#nama').val(data.nama_supplier);
        $('#alamat').val(data.alamat_kantor);
        $('#noTelp').val(data.no_telp);
        $('#email').val(data.email);
        $('#provinsi').val(data.provinsi_id);
-       $('#kota').val(data.id_kota);
+       $('#kota').val(data.kota_id);
      },
      error : function(){
        alert("Tidak dapat menampilkan data!");
@@ -125,7 +125,7 @@ function editForm(id){
      success : function(data){
        $('#modal-form').modal('show');
        $('.modal-title').text('Edit Supplier');
-       
+
        $('#id').val(data.id_supplier);
        $('#nama').val(data.nama_supplier);
        $('#alamat').val(data.alamat_kantor);
@@ -161,7 +161,7 @@ function deleteData(id){
 function hanyaAngka(evt) {
   var charCode = (evt.which) ? evt.which : event.keyCode
   if (charCode > 31 && (charCode < 48 || charCode > 57))
- 
+
   return false;
   return true;
 }

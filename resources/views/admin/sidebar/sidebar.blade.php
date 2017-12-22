@@ -27,26 +27,45 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
-          <a href="{{url('/')}}">
+          <a href="{{route('home')}}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
+
         <li class="treeview">
           <a href="#">
             <i class="fa  fa-paper-plane-o"></i>
-            <span>Data Master</span>
+            <span>Inventori</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="{{route('kategori.index')}}"><i class="fa fa-tags"></i> Kategori Barang</a></li>
-            <li><a href="{{route('provinsi.index')}}"><i class="fa fa-map-o"></i> Provinsi</a></li>
             <li><a href="{{route('kota.index')}}"><i class="fa fa-map-marker"></i> Kota</a></li>
-            <li><a href="{{route('supplier.index')}}"><i class="fa fa-id-card-o"></i> Supplier</a></li>
             <li><a href="{{route('profile.index')}}"><i class="fa fa-users"></i> Pegawai</a></li>
+            <li><a href="{{route('provinsi.index')}}"><i class="fa fa-map-o"></i> Provinsi</a></li>
+            <li><a href="{{route('supplier.index')}}"><i class="fa fa-id-card-o"></i> Supplier</a></li>
           </ul>
         </li>
-        
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-briefcase"></i>
+            <span>Barang</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-list"></i>Daftar Barang </a></li>
+            <li><a href=""><i class="fa fa-truck"></i> Barang Masuk </a></li>
+            <li><a href=""><i class="fa fa-share"></i> Barang Keluar </a></li>
+            <li><a href=""><i class="fa fa-shopping-cart"></i> Transaksi </a></li>
+
+          </ul>
+        </li>
+
+
     </section>
     <!-- /.sidebar -->
   </aside>

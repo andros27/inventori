@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Produk;
 use App\Kategori;
+use DataTables;
 
 class ProdukController extends Controller
 {
@@ -17,7 +19,7 @@ class ProdukController extends Controller
     {
         //
         $kategori = Kategori::all();
-        return view('produk.index',compact('kategori'));
+        return view('produk.index', compact('kategori'));
     }
 
     /**
@@ -25,6 +27,33 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function listData()
+    {
+        $produk = Produk::leftJoin('kategori', 'produk.id_kategori', '=', 'kategori.id_kategori')->orderBy('id_produk', 'asc')->get();
+
+        $no = 0;
+
+        $data = array();
+        foreach($produk as $list)
+        {
+            $no ++;
+            $row = array();
+            $row[] = "<input type='checkbox' name='id[]' value=".$list->id_produk."'>";
+            $row[] = $no;
+            $row[] = $list->nama_produk;
+            $row[] = $list->nama_kategori;
+            $row[] = $list->merk;
+            $row[] = $list->stok;
+            $row[] = '<div class="btn-group">
+               <a onclick="editForm('.$list->id_produk.')" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+               <a onclick="deleteData('.$list->id_produk.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></div>';
+
+            $data[] = $row;   
+        }
+        return DataTables::of($data)->escapeColumns([])->make(true);
+    }
+
     public function create()
     {
         //
@@ -39,6 +68,20 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         //
+        //$jml = Produk::where('nama_produk', '=', $request['nama_produk'], 'and', 'merk', '=', $request['merk'])->count();
+        //if ($jml > 1) {
+            # code...
+            $produk = new Produk;
+            $produk->id_kategori = $request['kategori'];
+            $produk->nama_produk = $request['nama_produk'];
+            $produk->merk = $request['merk'];
+            $produk->save();
+            echo json_encode(array('msg'=>'success'));
+        /*}
+        else
+        {
+            echo json_encode(array('msg'=>'errors'));
+        }*/
     }
 
     /**
@@ -61,6 +104,8 @@ class ProdukController extends Controller
     public function edit($id)
     {
         //
+        $produk = Produk::find($id);
+        echo json_encode($produk);
     }
 
     /**
@@ -73,6 +118,12 @@ class ProdukController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $produk = Produk::find($id);
+        $produk->id_kategori = $request['kategori'];
+        $produk->nama_produk = $request['nama_produk'];
+        $produk->merk = $request['merk'];
+        $produk->save();
+        echo json_encode(array('msg'=>'success'));
     }
 
     /**
@@ -84,5 +135,15 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         //
+        $produk = Produk::find($id);
+        $produk->delete();
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        foreach($request['id'] as $id){
+            $produk = Produk::find($id);
+            $produk->delete();
+        }
     }
 }

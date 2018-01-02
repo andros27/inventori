@@ -14,17 +14,15 @@ class KotaTableSeeder extends Seeder
         //
         DB::table('kota')->insert(array(
         	[
-        		'provinsi_id' => '1',
+        		'provinsi_id' => 1,
         		'nama_kota' => 'Banda Aceh',
         	],
-
             [
-                'provinsi_id' => '9',
+                'provinsi_id' => 9,
                 'nama_kota' => 'Cilacap',
             ],
-
             [
-                'provinsi_id' => '9',
+                'provinsi_id' => 9,
                 'nama_kota' => 'Purwokerto',
             ],
         	));

@@ -53,9 +53,11 @@ Route::resource('provinsi', 'ProvinsiController');
 //Bagian Kota
 Route::get('kota/data', 'KotaController@listData')->name('kota.data');
 Route::post('kota/hapus','KotaController@deleteSelected');
-Route::resource('kota', 'KotaController');
+Route::resource('kota', 'KotaController'); 
 
 //Bagian Produk
+Route::get('produk/data', 'ProdukController@listData')->name('produk.data');
+Route::post('produk/hapus','ProdukController@deleteSelected');
 Route::resource('produk', 'ProdukController'); 
 });
 //Route::get('/', function () {

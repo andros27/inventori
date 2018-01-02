@@ -9,7 +9,6 @@
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> {{ Auth::user()->jabatan }}</a>
         </div>
       </div>
       <!-- search form -->
@@ -34,16 +33,13 @@
         <li class="treeview">
           <a href="#">
             <i class="fa  fa-paper-plane-o"></i>
-            <span>Inventori</span>
+            <span>Data Master</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{route('kategori.index')}}"><i class="fa fa-tags"></i> Kategori Barang</a></li>
-            <li><a href="{{route('kota.index')}}"><i class="fa fa-map-marker"></i> Kota</a></li>
             <li><a href="{{route('profile.index')}}"><i class="fa fa-users"></i> Pegawai</a></li>
-            <li><a href="{{route('provinsi.index')}}"><i class="fa fa-map-o"></i> Provinsi</a></li>
             <li><a href="{{route('supplier.index')}}"><i class="fa fa-id-card-o"></i> Supplier</a></li>
           </ul>
         </li>
@@ -57,11 +53,26 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-list"></i>Daftar Barang </a></li>
+            <li><a href="{{route('produk.index')}}"><i class="fa fa-list"></i>Daftar Barang </a></li>
             <li><a href=""><i class="fa fa-truck"></i> Barang Masuk </a></li>
             <li><a href=""><i class="fa fa-share"></i> Barang Keluar </a></li>
             <li><a href=""><i class="fa fa-shopping-cart"></i> Transaksi </a></li>
 
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-gear"></i>
+            <span>Pengaturan</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('kategori.index')}}"><i class="fa fa-tags"></i> Kategori Barang</a></li>
+            <li><a href="{{route('kota.index')}}"><i class="fa fa-map-marker"></i> Kota</a></li>
+            <li><a href="{{route('provinsi.index')}}"><i class="fa fa-map-o"></i> Provinsi</a></li>
           </ul>
         </li>
 

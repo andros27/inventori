@@ -123,7 +123,7 @@ function editForm(id){
      dataType : "JSON",
      success : function(data){
        $('#modal-form').modal('show');
-       $('.modal-title').text('Edit Kota');
+       $('.modal-title').text('Edit Produk');
        
        $('#id').val(data.id_produk);
        $('#kategori').val(data.id_kategori);

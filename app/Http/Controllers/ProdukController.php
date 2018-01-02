@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Produk;
 use App\Kategori;
 use DataTables;
-
+use PDF;
 class ProdukController extends Controller
 {
     /**
@@ -139,6 +139,7 @@ class ProdukController extends Controller
         $produk->delete();
     }
 
+    //menghapus banyak data sekaligus
     public function deleteSelected(Request $request)
     {
         foreach($request['id'] as $id){
@@ -146,4 +147,7 @@ class ProdukController extends Controller
             $produk->delete();
         }
     }
+
+    //membuat pdf
+
 }

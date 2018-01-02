@@ -58,7 +58,8 @@ Route::resource('kota', 'KotaController');
 //Bagian Produk
 Route::get('produk/data', 'ProdukController@listData')->name('produk.data');
 Route::post('produk/hapus','ProdukController@deleteSelected');
-Route::resource('produk', 'ProdukController'); 
+Route::resource('produk', 'ProdukController');
+Route::get('pdfproduk', 'ProdukController@makePDF'); 
 });
 //Route::get('/', function () {
   //  return view('welcome');

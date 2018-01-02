@@ -30,6 +30,7 @@
                 <th align="center">Nama</th>
                 <th align="center">No Telp.</th>
                 <th align="center">E-mail</th>
+                <th align="center">Gambar</th>
                 <th align="center">#</th>
               </tr>
             </thead>

@@ -45,6 +45,7 @@ class UserController extends Controller
             $row[] = $list->name;
             $row[] = $list->no_telp;
             $row[] = $list->email;
+            $row[] = '<img src="/uploads/avatar/'.$list->avatar.'" class="img-circle" alt="User Image" height="50" width="50">';
             $row[] = '<div class="btn-group">
                 <a onclick="editForm('.$list->id.')" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                 <a onclick="deleteData('.$list->id.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
